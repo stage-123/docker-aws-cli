@@ -6,6 +6,7 @@ RUN apk -v --update add \
         less \
         mailcap \
         docker \
+        bash \
         && \
     pip install --upgrade awscli==1.14.5 && \
     apk -v --purge del py-pip && \
