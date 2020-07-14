@@ -1,4 +1,4 @@
-FROM alpine:3.9.2
+FROM alpine:latest
 
 RUN apk -v --update add \
 	python \
@@ -9,12 +9,12 @@ RUN apk -v --update add \
 	mailcap \
 	docker \
 	bash
-RUN	pip install --upgrade awscli==1.14.5 && \
+RUN	pip install --upgrade awscli==1.18.83 && \
 	apk -v --purge del py-pip && \
 	rm /var/cache/apk/*
-RUN	curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-RUN	chmod +x ./kubectl
-RUN	mv ./kubectl /usr/local/bin/kubectl
+#RUN	curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+#RUN	chmod +x ./kubectl
+#RUN	mv ./kubectl /usr/local/bin/kubectl
 
 VOLUME /root/.aws
 VOLUME /project
